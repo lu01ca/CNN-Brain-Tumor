@@ -40,6 +40,7 @@ library(keras)
 library(tensorflow)
 library(magick)
 library(caret)
+library(here)
 ```
 
 ## Preprocessing e split
@@ -52,7 +53,7 @@ Preliminarmente alla generazione delle directory, è stata implementata una proc
 path <- here("Brain")
 
 # Percorso dove verrà creato il dataset diviso
-path.new.dir <- here("Brain_split")
+path.new.dir <- here("Brain split")
 
 # Definizione proporzioni split (stratificato per classe)
 prop.train <- 0.70  # 70% Training
@@ -372,8 +373,8 @@ history2 <- model2 %>% fit(
 ```
 
 ```{r model2-load, include=FALSE}
-path_model <- here("Modelli salvati", "modello2.h5")
-path_hist  <- here("Modelli salvati", "training2.rds")
+path_model_2 <- here("Modelli salvati", "modello2.h5")
+path_hist_2  <- here("Modelli salvati", "training2.rds")
 
 model2 <- load_model_hdf5(path_model_2)
 history2 <- readRDS(path_hist_2)
@@ -508,8 +509,8 @@ history3 <- model3 %>% fit(
 ```
 
 ```{r model3-load, include=FALSE}
-path_model <- here("Modelli salvati", "modello3.h5")
-path_hist  <- here("Modelli salvati", "training3.rds")
+path_model_3 <- here("Modelli salvati", "modello3.h5")
+path_hist_3  <- here("Modelli salvati", "training3.rds")
 
 model3 <- load_model_hdf5(path_model_3)
 history3 <- readRDS(path_hist_3)
@@ -610,8 +611,8 @@ saveRDS(history.ft, "training_ft.rds")
 ```
 
 ```{r model4-load, include=FALSE}
-path_model <- here("Modelli salvati", "modello_ft.h5")
-path_hist  <- here("Modelli salvati", "training_ft.rds")
+path_model_ft <- here("Modelli salvati", "modello_ft.h5")
+path_hist_ft  <- here("Modelli salvati", "training_ft.rds")
 
 model.ft <- load_model_hdf5(path_model_ft)
 history.ft <- readRDS(path_hist_ft)
