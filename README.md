@@ -13,7 +13,7 @@ The dataset was originally published by Jun Cheng (2017) and sourced from [Kaggl
 * **Glioma (Class 2):** 1,426 images (Majority class)
 * **Pituitary Tumor (Class 3):** 930 images
 
-![Uploading mri_samples.png…]()
+<img width="776" height="278" alt="mri_samples" src="https://github.com/user-attachments/assets/a3521e82-6b77-4716-983a-eecf642f4a8b" />
 
 
 ## Models & Methodology
