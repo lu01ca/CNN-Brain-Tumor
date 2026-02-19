@@ -33,7 +33,7 @@ Leveraged Transfer Learning using the VGG16 base pre-trained on ImageNet as a st
 * **Results:** Achieved **91.1% accuracy**.
 * **Limitation:** Struggled to differentiate Meningiomas (Precision: 78.5%), producing many false positives. The VGG16 filters, optimized for natural images, were not perfectly suited for the specific textures of brain MRIs without further adaptation.
 
-### 4. VGG16: Fine-Tuning (Best Model) 🏆
+### 4. VGG16: Fine-Tuning (Best Model)
 To adapt the pre-trained features to the medical domain, the last convolutional block (`block5`) of VGG16 was "unfrozen" and trained alongside the classifier. 
 <img width="666" height="480" alt="loss_accuracy_curves.png" />
 
