@@ -13,6 +13,8 @@ The dataset was originally published by Jun Cheng (2017) and sourced from [Kaggl
 * **Glioma (Class 2):** 1,426 images (Majority class)
 * **Pituitary Tumor (Class 3):** 930 images
 
+<img width="776" height="278" alt="Screenshot 2026-02-19 alle 22 55 30" src="https://github.com/user-attachments/assets/816e8c45-becf-4496-ba06-bc6395637bb1" />
+
 ## Models & Methodology
 To address the challenges of medical image classification and class imbalance, four different approaches were sequentially implemented and evaluated:
 
@@ -31,10 +33,28 @@ Leveraged Transfer Learning using the VGG16 base pre-trained on ImageNet as a st
 * **Results:** Achieved **91.1% accuracy**.
 * **Limitation:** Struggled to differentiate Meningiomas (Precision: 78.5%), producing many false positives. The VGG16 filters, optimized for natural images, were not perfectly suited for the specific textures of brain MRIs without further adaptation.
 
-### 4. VGG16: Fine-Tuning (Best Model)
-To adapt the pre-trained features to the medical domain, the last convolutional block (`block5`) of VGG16 was "unfrozen" and trained alongside the classifier. This allowed the network to retain low-level universal features (edges, gradients) while learning domain-specific high-level representations (tumor tissue textures).
-* **Results:** Achieved the highest performance with **95.0% accuracy**. Precision and Sensitivity exceeded 90% across all classes, proving to be the most robust and clinically viable model.
+### 4. VGG16: Fine-Tuning (Best Model) 🏆
+To adapt the pre-trained features to the medical domain, the last convolutional block (`block5`) of VGG16 was "unfrozen" and trained alongside the classifier. 
+<img width="666" height="480" alt="Screenshot 2026-02-19 alle 22 57 37" src="https://github.com/user-attachments/assets/4687bd10-0c06-416a-a4f7-338db99f0f1b" />
 
+**Performance on Test Set:**
+* **Accuracy:** 95.0% (95% CI: 0.925 - 0.968)
+* **Kappa:** 0.921
+
+**Confusion Matrix:**
+
+| Prediction \ True Class | 0 (Glioma) | 1 (Meningioma) | 2 (Pituitary) |
+| :--- | :--- | :--- | :--- |
+| **0 (Glioma)** | **206** | 8 | 3 |
+| **1 (Meningioma)** | 6 | **96** | 2 |
+| **2 (Pituitary)** | 2 | 2 | **134** |
+
+**Statistics by Class:**
+* **Glioma (0):** Sensitivity 96.3% | Specificity 95.5% | Balanced Accuracy 95.9%
+* **Meningioma (1):** Sensitivity 90.6% | Specificity 97.7% | Balanced Accuracy 94.2%
+* **Pituitary (2):** Sensitivity 96.4% | Specificity 98.8% | Balanced Accuracy 97.6%
+
+*Insight: The Fine-Tuned model successfully overcame the initial bias against the minority class (Meningioma), achieving >90% sensitivity across all categories, making it highly robust for clinical decision support.*
 ## Uncertainty Quantification: Conformal Prediction
 Medical AI requires strict reliability. Instead of providing absolute point predictions (which can be misleading in ambiguous cases), **Split Conformal Prediction** was applied to the Fine-Tuned VGG16 model.
 
@@ -45,7 +65,7 @@ Given a confidence level of $1-\alpha$, this framework outputs a *Prediction Set
 
 ## 📂 Repository Structure
 * `Brain_Tumor_CNN.Rmd`: The complete source code containing data preprocessing, model architectures, training loops, and evaluation metrics.
-* `Brain_Tumor_CNN.md` (or `.html`): The rendered output of the analysis containing all visualizations, loss curves, and confusion matrices. *(Note: Link to the HTML preview if applicable).*
+* `Brain_Tumor_CNN.md`: The rendered output of the analysis containing all visualizations, loss curves, and confusion matrices.
 
 ## 💻 Tech Stack
 * **Language:** R
