@@ -13,7 +13,8 @@ The dataset was originally published by Jun Cheng (2017) and sourced from [Kaggl
 * **Glioma (Class 2):** 1,426 images (Majority class)
 * **Pituitary Tumor (Class 3):** 930 images
 
-<img width="776" height="278" alt="mri_samples.png" />
+![Uploading mri_samples.png…]()
+
 
 ## Models & Methodology
 To address the challenges of medical image classification and class imbalance, four different approaches were sequentially implemented and evaluated:
@@ -35,7 +36,9 @@ Leveraged Transfer Learning using the VGG16 base pre-trained on ImageNet as a st
 
 ### 4. VGG16: Fine-Tuning (Best Model)
 To adapt the pre-trained features to the medical domain, the last convolutional block (`block5`) of VGG16 was "unfrozen" and trained alongside the classifier. 
-<img width="666" height="480" alt="loss_accuracy_curves.png" />
+
+<img width="666" height="480" alt="loss_accuracy_curves" src="https://github.com/user-attachments/assets/7e885573-ee1b-4530-b387-01903bfe94ba" />
+
 
 **Performance on Test Set:**
 * **Accuracy:** 95.0% (95% CI: 0.925 - 0.968)
